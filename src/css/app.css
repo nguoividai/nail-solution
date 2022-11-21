@@ -1,0 +1,157 @@
+@import url("./bootstrap/bootstrap-grid.min.css");
+@import url("./icon/icofont/icofont.min.css");
+
+@import url("./module/layout.css");
+@import url("./module/header.css");
+@import url("./module/button.css");
+@import url("./module/list.css");
+@import url("./module/footer.css");
+@import url("./module/social.css");
+@import url("./module/sideNav.css");
+@import url("./module/form.css");
+@import url("./module/banner.css");
+@import url("./module/card.css");
+@import url("./module/section.css");
+@import url("./module/rating.css");
+@import url("./module/alert.css");
+@import url("./module/badge.css");
+
+@import url("./pages/pages.css");
+
+@font-face {
+    font-family: 'Inter';
+    src:  url('./font-face/Inter/static/Inter-Regular.ttf');
+  }
+
+@font-face {
+    font-family: 'InterBold';
+    src:  url('./font-face/Inter//static/Inter-Bold.ttf');
+    font-weight: bold;
+  }
+
+@font-face {
+    font-family: 'InterSemiBold';
+    src:  url('./font-face/Inter/static/Inter-SemiBold.ttf');
+  }
+
+@font-face {
+    font-family: 'InterMedium';
+    src:  url('./font-face/Inter/static/Inter-Medium.ttf');
+  }
+
+
+/* // Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... } */
+
+:root {
+    --app-color-primary-orange: #F4894A;
+    --app-color-primary-dark: #475569;
+    --app-color-primary-white: #fff;
+    --app-color-text-1: #000000;
+    --app-color-text-2: #27272A;
+    --app-color-text-3: #4B5563;
+    --app-color-text-4: #16A34A;
+    --app-color-text-5: #6B7280;
+    --app-color-text-link: #F4894A;
+    --app-color-text-danger: #DC2626;
+    --app-color-bg-1: #000000;
+    --app-color-bg-2: #D7F1FD;
+    --app-color-bg-3: #E11D48;
+    --app-color-bg-4: #F0FDF4;
+    --app-color-bg-danger: #FEF2F2;
+    --app-color-bg-disabled: #F1F5F9;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+    font-size: 16px;
+    color: #312F30;
+    font-family: Inter;
+    
+}
+
+h1 {
+font-size: 48px;
+font-family: InterBold;
+}
+
+h2 {
+font-size: 32px;
+font-family: InterBold, InterSemi;
+}
+
+h3 {
+font-size: 24px;
+font-family: InterSemi;
+font-weight: 600;
+color: #000;
+}
+
+h4 {
+font-size: 18px;
+font-family: Inter, InterBold;
+}
+
+body {
+font-family: Inter;
+font-size: 14px;
+}
+
+body:has(.backdrop), html:has(.backdrop) {
+overflow: hidden;
+}
+
+small {
+font-size: 16px;
+}
+
+caption {
+font-size: 12px;
+}
+
+button {
+font-family: Inter;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.25s;
+}
+
+a:hover {
+  color: inherit;
+  color: var(--app-color-primary-blue);
+}
+
+/* CUSTOM LIBRARY REACT_SLICK */
+.slick-slider .slick-arrow::after, .slick-slider .slick-arrow::before{
+  color: var(--app-color-text-2);
+  display: none;
+}
+
+.slick-initialized .slick-slide {
+  padding: 1.5rem
+}

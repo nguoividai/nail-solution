@@ -1,0 +1,20 @@
+.badge {
+    position: relative;
+}
+
+.badge .badge-count {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    transform: translate(50%,-50%);
+    transform-origin: 100% 0%;
+    padding: 0.15rem 0.3rem;
+    top: 0.5rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 18px;
+    border-radius: 5px;
+    right: 0.75rem;
+    background: var(--app-color-primary-orange);
+    color: var(--app-color-primary-white);
+}

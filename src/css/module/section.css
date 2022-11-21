@@ -1,0 +1,33 @@
+.section .title {
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 26px;
+    color: #27272A;
+}
+
+.section .extra {
+    text-align: center;
+    color: var(--app-color-text-5);
+    margin-top: -1rem;
+}
+
+.section .section-content {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 140%;
+}
+
+@media screen and (min-width: 768px) {
+    .section .title {
+        padding: 1.5rem 0 0rem 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section .title {
+        padding: 1.5rem 0 0rem 0;
+    }
+
+    
+}
+

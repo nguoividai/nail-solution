@@ -1,0 +1,57 @@
+.form-item {
+    margin: 0.5rem 0 ;
+}
+
+.form-item label {
+    display: block;
+    color: #969696;
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 0.25rem
+}
+
+.form-item .form-item-input input[type="text"],
+.form-item .form-item-input input[type="number"],
+.form-item .form-item-input input[type="password"] {
+    padding: 0px 0px 0px 16px;
+    background: #FBFBFB;
+    border: 1px solid #E7EAEF;
+    border-radius: 5px;
+    width: 100%;
+    height: 3rem;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.form-item .form-item-input input[type="checkbox"],
+.form-item .form-item-input input[type="radio"]  {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #C4C4C4;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+}
+
+.form-item .form-item-input:has(input[type="checkbox"]),
+.form-item .form-item-input:has(input[type="radio"])  {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.form-item .form-item-input input:focus {
+    outline: 1px solid var(--app-color-bg-1);
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--app-color-link);
+    opacity: 1; /* Firefox */
+}
+
+input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+input::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+}

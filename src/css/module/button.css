@@ -1,0 +1,103 @@
+button.button {
+    padding: 0.4375rem 1.625rem;
+    border-radius: 0.5rem;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.25s;
+}
+
+button.button:hover {
+    background-color: var(--app-color-bg-3) !important;
+    color: var(--app-color-primary-white) !important;
+}
+
+button.button.link {
+    background-color: #525252;
+    color: var(--app-color-primary-white);
+}
+
+.button.circle {
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.circle i {
+    font-size: 24px;
+}
+
+button.button.primary {
+    background: var(--app-color-primary-orange);
+}
+
+button.button.white {
+    background: #fff;
+    color:  var(--app-color-primary-orange);
+    border: 1px solid var(--app-color-primary-orange);
+}
+
+button.button.grey {
+    background: #F2F2F2;
+    color: #005888;
+}
+
+button.button.sm {
+    padding: 6px 15px;
+    font-size: 14px;
+}
+
+button.button.md {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+button.button.lg {
+    background: #005888;
+    padding: 15px 69px;
+    font-size: 20px;
+}
+
+.cart {
+    padding: 0.1rem 0.5rem;
+    left: 1308px;
+    top: 24px;
+    background: #334155;
+    border-radius: 16px;
+    color: #fff;
+}
+
+.cart:hover {
+    color: var(--app-color-primary-orange);
+}
+
+
+/* Quantity */
+.button-quantity {
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.button-quantity input, .button-quantity input:disabled {
+    border: 0;
+    width: 30px;
+    font-size: 1rem;
+    color: #ccc !important;
+    text-align: center;
+}
+
+.button-quantity .button {
+    background: #FFFFFF !important;
+    color: #ccc !important;
+}
+
+.button-quantity .button:hover {
+    background: #fafafa !important;
+    color: #ccc !important;
+}

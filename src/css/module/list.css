@@ -1,0 +1,117 @@
+
+.list-title {
+    font-weight: 600;
+    color: var(--app-color-bg-1);
+    margin: 0;
+    padding-bottom: 0.25rem;
+    font-size: 16px;
+}
+
+ul.list {
+    list-style: none;
+    margin: 0;
+}
+
+ul.list-vertical {
+    padding: 0;
+}
+
+ul.list-vertical .list-item {
+    padding: 0.45rem 0;
+}
+
+
+ul.list.list-horizontal {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+ul.list.list-item {
+    line-height: 140%;
+}
+
+.app-footer ul.list-vertical .list-item {
+    color: var(--app-color-link);
+}
+
+/* LIST DESCRIPTION */
+.list .list-item.list-description:first-child {
+    margin-top: 0;
+}
+
+.list .list-item.list-description {
+    padding: 1rem;
+    border-radius: 1px;
+    margin: 0.75rem 0;
+    border-radius: 5px;
+}
+
+.list-description.active {
+    background: #4E4E4E;
+}
+
+.list-description--title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 29px;
+    padding-bottom: 0.5rem;
+}
+
+.list-description--information {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 140%;
+    color: #CCCCCC;
+}
+
+
+/* MENU TABS */
+.menu-tabs {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.menu-tabs .menu-tab--item {
+    font-size: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding: 0.25rem;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.menu-tabs .menu-tab--item.active {
+    color: var(--app-color-primary-orange);
+    border-color: var(--app-color-primary-orange);
+}
+
+.menu-tabs.horizontal {
+    gap: 4rem;
+}
+
+.menu-tabs.horizontal .menu-tab--item  {
+    display: block;
+    text-align: center;
+    border: 0;
+    min-width: 75px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.menu-tabs.horizontal .menu-tab--item img  {
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin: 0.5rem;
+    max-height: 20px;
+}
+
+/* PRODUCT TABS */
+.product-tabs .tab-pane {
+    padding: 0.5rem;
+}

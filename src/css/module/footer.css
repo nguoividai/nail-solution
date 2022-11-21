@@ -1,0 +1,111 @@
+.app-footer {
+    background-color: var(--app-color-primary-white);
+    color: var(--app-color-text-5);
+    padding: 0.75rem 0.6rem 0.5rem 1.1rem ;
+    font-size: 16px;
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.app-footer .footer-5 .icon {
+    padding-top:0.5rem;
+    display: flex;
+    gap: 1rem
+}
+
+.app-footer .description-logo {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 18px;
+    margin-top: 0;
+}
+
+.app-footer .footer-center:has(.mobile) {
+    border-top: 1px solid #E5E7EB;
+    padding: 0.5rem 0;
+}
+
+.app-footer .list {
+    padding: 0;
+    gap: 0 ;
+}
+
+.app-footer .list.list-horizontal .list-item {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 16px;
+   
+}
+
+.app-footer .footer-center .list.mobile  {
+    gap: 0rem;
+}
+.app-footer .footer-center .list.mobile .list-item::after {
+    content: "|";
+    padding: 0 1rem;
+    color: #E5E7EB;
+}
+
+.app-footer .footer-center .list.mobile .list-item:last-child::after {
+    content: "";
+}
+
+.footer-center {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .app-footer {
+        display: block;
+        background-color: #000;
+        color: #fff;
+    }
+    .app-footer img.logo {
+        width: 125px;
+        background: #fff;
+        padding: 0 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .app-footer .footer-1,
+    .app-footer .footer-2,
+    .app-footer .footer-3,
+    .app-footer .footer-4,    
+    .app-footer .footer-5 {
+        width: 20%;
+    }
+    
+    .footer-center:has(.social-list) {
+        display: flex !important;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-center:has(.social-list) .list {
+        width: 70%;
+    }
+
+    .footer-center:has(.social-list) .social-list {
+        width: 30%;
+        display: flex;
+        justify-content: right;
+        gap: 0.5rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .app-footer {
+        display: block;
+        padding: 0.75rem 0.6rem 0.5rem 1.1rem ;
+
+    }
+    .app-footer .footer-1,
+    .app-footer .footer-2,
+    .app-footer .footer-3,
+    .app-footer .footer-4,    
+    .app-footer .footer-5 {
+        width: 100%;
+        margin: 1rem 0;
+    }
+}

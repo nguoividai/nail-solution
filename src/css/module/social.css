@@ -1,0 +1,29 @@
+.social-link {
+    background-color: #525252;
+    color: var(--app-color-primary-white);
+    padding: 6px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.social-link.sm {
+    width: 30px;
+    height: 30px;
+}
+
+.social-link:hover {
+    background-color: var(--app-color-bg-3) !important;
+}
+
+.social-link i {
+    font-size: 24px;
+}
+.social-link.sm i {
+    font-size: 16px;
+}

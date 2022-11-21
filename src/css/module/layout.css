@@ -1,0 +1,61 @@
+.app-content {
+    min-height: calc(100vh - 64px);
+    padding: 64px 12px 0px 12px !important;
+    background: #fafafa;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-primary {
+    text-decoration: none;
+    color: var(--app-color-primary-blue);
+    font-weight: 400;
+}
+
+.text-grey {
+    color: var(--app-color-bg-5);
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
+}
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.mt-5 {
+    margin-top: 5rem !important;
+}
+
+.font-medium {
+    font-weight: 500;
+    font-family: barlow-medium;
+}
+
+.row-gap-1 {
+    row-gap: 1rem;
+}
+
+.row-gap-2 {
+    row-gap: 2rem;
+}
+
+.row-gap-5 {
+    row-gap: 5rem;
+}
+
+.float-right {
+    float:right
+}
+

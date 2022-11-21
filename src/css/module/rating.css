@@ -1,0 +1,14 @@
+.rating .active{
+    color: #FBBF24;
+}
+
+.rating .active.haft-star {
+    background: linear-gradient(to right, #FBBF24 50%, #CBD5E1 50%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rating {
+    color: #CBD5E1;
+    font-size: 14px;
+}

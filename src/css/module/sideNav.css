@@ -1,0 +1,103 @@
+/* The side navigation menu */
+
+.sidenav-toggle {
+cursor: pointer;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Stay on top */
+    background-color: #fff; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all 0.4s;
+}
+
+.sidenav.left {
+  top: 0;
+  left: 0;
+}
+
+.sidenav.right {
+  top: 0;
+  right: 0;
+}
+
+
+
+.sidenav .sidenav-content{
+   padding: 1rem
+}
+  
+  /* The navigation menu links */
+  .sidenav .closebtn {
+    padding: 4px;
+    text-decoration: none;
+    color: #818181;
+    transition: 0.3s;
+    margin: 0.5rem;
+    width: auto;
+    display: flex;
+    height: auto;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background: #F8FAFC;
+    border-radius: 8px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a.closebtn:hover {
+    color: var(--app-color-primary-dark);
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+  
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a.closebtn {font-size: 18px;}
+  }
+
+  @media screen and (max-width: 768px) {
+    .sidenav.show{
+      width: 60%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .sidenav.show{
+      width: 30%;
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.3;
+    z-index: 10;
+  }
+
+  .sidenav-footer {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 0;
+    border-top:  1px solid #E5E7EB;
+    left: 20px;
+    right: 20px;
+    font-size: 12px;
+  }
