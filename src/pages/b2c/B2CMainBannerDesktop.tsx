@@ -1,7 +1,6 @@
 import React from 'react';
 import SliderSimple from 'src/components/slider/SliderSimple';
-import rectangle from 'src/assets/images/jumia/Rectangle 1.jpg';
-import banner from 'src/assets/images/jumia/banner.jpg';
+import banner from 'src/assets/images/bg.jpg';
 
 const B2CMainBanner = () => {
   return (

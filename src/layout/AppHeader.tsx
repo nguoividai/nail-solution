@@ -14,15 +14,16 @@ const AppHeader = () => {
       <div className="side-nav-icon">
         <SideNavToggle />
       </div>
-      <div className="logo text-center">
-        <strong>
-          <img src={logo} alt="logo" />
-        </strong>
+      <div className="logo text-center d-block">
+        <strong className="d-block">TIFFANY NAILS & SPA</strong>
+        <span className="d-block" style={{ marginTop: 5 }}>
+          (720) 283-6777
+        </span>
       </div>
 
       <div className="nav-link">
         <List className="list-header" layout="horizontal">
-          <List.ListItem>
+          {/* <List.ListItem>
             <img src={home} alt="icon" style={{ width: 20 }} /> Home
           </List.ListItem>
           <List.ListItem>
@@ -30,6 +31,10 @@ const AppHeader = () => {
           </List.ListItem>
           <List.ListItem>
             <img src={account} alt="icon" style={{ width: 20 }} /> My Account
+          </List.ListItem> */}
+          <List.ListItem className="open-hour">
+            <span className="d-block open-text">Address</span>
+            40 W LITTLETON BLVD #205A, LITTLETON CO 80120
           </List.ListItem>
           <List.ListItem className="open-hour">
             <span className="d-block open-text">Open</span>
@@ -40,11 +45,11 @@ const AppHeader = () => {
       <div className="action">
         <div className="d-flex d-xs-flex d-sm-flex d-md-flex d-lg-none open">
           <div className="ellipse"></div>
-          <span>OPEN</span>
+          <span>BOOKING</span>
         </div>
-        <a className="d-none d-lg-block cart" href="#/">
+        {/* <a className="d-none d-lg-block cart" href="#/">
           <i className="icofont-cart-alt"></i> 2
-        </a>
+        </a> */}
       </div>
     </header>
   );

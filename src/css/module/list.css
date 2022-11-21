@@ -85,8 +85,8 @@ ul.list.list-item {
 }
 
 .menu-tabs .menu-tab--item.active {
-    color: var(--app-color-primary-orange);
-    border-color: var(--app-color-primary-orange);
+    color: var(--app-color-primary-blue);
+    border-color: var(--app-color-primary-blue);
 }
 
 .menu-tabs.horizontal {

@@ -58,12 +58,12 @@
 @media screen and (min-width: 768px) {
     .app-footer {
         display: block;
-        background-color: #000;
-        color: #fff;
+        background-color: #fafafa;
+        color: var(--app-color-text-2);
     }
     .app-footer img.logo {
         width: 125px;
-        background: #fff;
+        /* background: #fff; */
         padding: 0 0.75rem;
         margin-bottom: 1.5rem;
     }

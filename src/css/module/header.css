@@ -128,11 +128,11 @@
     }
     
     .app-header .action {
-        width: 20%;
+        display: none;
     }
     
     .app-header .nav-link {
-        width: 65%;
+        width: 85%;
     }
     
     
@@ -140,11 +140,11 @@
 
 @media screen and (min-width: 1200px)  {
     .app-header .logo {
-        width: 10%;
+        width: 20%;
     }
     
     .app-header .action {
-        width: 10%;
+        display: none;
     }
     
     .app-header .nav-link {

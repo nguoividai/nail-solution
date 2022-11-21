@@ -1,0 +1,102 @@
+
+.booking-info ul {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: rgba(52, 48, 65, 0.25);
+}
+
+.booking-info .step_info_item  {
+    display: table-cell;
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    vertical-align: middle;
+    height: 88px;
+}
+
+.booking-info .step_info_item {
+    cursor: pointer;
+    transition: 0.5s;
+ }
+
+.booking-info .step_info_item:hover {
+    opacity: 0.7;
+ }
+
+.booking-info .step_info_item.active {
+    background: var(--app-color-bg-3);
+    color: #fff
+ }
+
+.booking-info .step_info_item.active:nth-child(2n+1) {
+    background: var(--app-color-text-link) ;
+    color: #fff
+ }
+
+ /* .booking-info ul li:first-child:after {
+    content: "123";
+    background: rgba(52, 48, 65, 0);
+    border-top-color: rgba(52, 48, 65, 0);
+    border-left-color: #343041;
+    border-bottom-color: rgba(52, 48, 65, 0);
+} */
+
+.booking-info ul li.active:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0;
+    top: 45px;
+    height: 100%;
+    border-top: 44px solid;
+    border-left: 10px solid;
+    border-bottom: 44px solid;
+    left: 100%;
+    margin-top: inherit;
+    transform: translateY(-50%);
+    background: rgba(52, 48, 65, 0);
+    border-top-color: rgba(52, 48, 65, 0);
+    border-left-color: var(--app-color-bg-3);
+    border-bottom-color: rgba(52, 48, 65, 0);
+}
+
+.booking-info ul li.active:nth-child(2n+1):after {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0;
+    top: 44px;
+    height: 100%;
+    border-top: 44px solid;
+    border-left: 10px solid;
+    border-bottom: 44px solid;
+    left: 100%;
+    margin-top: inherit;
+    transform: translateY(-50%);
+    background: rgba(52, 48, 65, 0);
+    border-top-color: rgba(52, 48, 65, 0);
+    border-left-color: var(--app-color-text-link);
+    border-bottom-color: rgba(52, 48, 65, 0);
+}
+
+.booking-info ul li:after {
+    content: "";
+    display: block;
+    background: url(../../assets/images//icon/menu-triangle.png) no-repeat scroll;
+    width: 10px;
+    height: 42px;
+    top: 50%;
+    right: 0;
+    position: absolute;
+    margin-top: -21px;
+    left: 95%;
+    z-index: 1;
+}
+
+.booking-info ul li:last-child:after, .booking-info ul li.active:last-child:after {
+    background: transparent !important;
+}

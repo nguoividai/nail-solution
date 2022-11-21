@@ -74,7 +74,7 @@
 
 /* CARD IMAGE */
 .card-image.active  {
-  border: 1px solid var(--app-color-primary-orange);
+  border: 1px solid var(--app-color-primary-blue);
 }
 
 .card-image .image  {
@@ -118,7 +118,7 @@
 }
 
 .card-image.active .content-title {
-    color: var(--app-color-primary-orange) !important;
+    color: var(--app-color-primary-blue) !important;
 }
 
 .card-image .content-title.sm {
@@ -313,7 +313,7 @@
 .card-promotion--title {
     font-size: 34px;
     line-height: 42px;
-    color: var(--app-color-primary-orange);
+    color: var(--app-color-primary-blue);
 }
 
 .card-promotion--name {
@@ -350,7 +350,7 @@
 
 .card-promotion--button i {
     font-size: 34px;
-    color: var(--app-color-primary-orange);
+    color: var(--app-color-primary-blue);
 }
 
 /* CARD REVIEWS */

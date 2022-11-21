@@ -31,13 +31,13 @@ button.button.link {
 }
 
 button.button.primary {
-    background: var(--app-color-primary-orange);
+    background: var(--app-color-primary-blue);
 }
 
 button.button.white {
     background: #fff;
-    color:  var(--app-color-primary-orange);
-    border: 1px solid var(--app-color-primary-orange);
+    color:  var(--app-color-primary-blue);
+    border: 1px solid var(--app-color-primary-blue);
 }
 
 button.button.grey {
@@ -71,7 +71,7 @@ button.button.lg {
 }
 
 .cart:hover {
-    color: var(--app-color-primary-orange);
+    color: var(--app-color-primary-blue);
 }
 
 
