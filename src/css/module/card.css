@@ -450,3 +450,54 @@
     right: 0.75rem;
     bottom: 0.75rem;
 }
+
+/* CARD CONTAINER */
+.card-container .card-container--title {
+    border-bottom: 1px solid #ddd;
+    line-height: 50px;
+    background: var(--app-color-primary-blue);
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.card-container .card-container--body {
+    padding: 1.25rem;
+}
+
+/* CARD TECHNICIAN */
+.card-technician {
+    display: flex;
+    gap: 1.5rem;
+    /* border: 1px solid #ddd; */
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-technician .card-technician--image {
+    width: 20%;
+}
+
+.card-technician .card-technician--body {
+    width: 80%;
+}
+
+.card-technician img {
+    max-width: 75px;
+}
+
+.card-technician .card-technician--name {
+   font-weight: 800;
+   font-size: 1.25rem;
+   line-height: 30px;
+}
+
+.card-technician .card-technician--description {
+   font-weight: 400;
+   font-size: 0.9rem;
+   padding-top: 0.5rem;
+   color: var(--app-color-text-5);
+}
+
+.card-technician .card-technician--action {
+   padding-top: 1rem
+}

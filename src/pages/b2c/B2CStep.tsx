@@ -1,45 +1,25 @@
 import React from 'react';
+import Step from 'src/components/step/Step';
+import BookingStaff from '../booking/BookingStaff';
 
 const B2CStep = () => {
   return (
-    <div className="booking-info">
-      <ul className="clearfix">
-        <li className="step_info_item active">
-          <a href="#book/count/1/">
-            <div className="content">
-              <div className="title-small">Staff</div>
-              <div className="title-sub"></div>
-            </div>
-          </a>
-        </li>
-
-        <li className="step_info_item">
-          <a href="#book/count/1/">
-            <div className="content">
-              <div className="title-small">Service</div>
-              <div className="title-sub"></div>
-            </div>
-          </a>
-        </li>
-
-        <li className="step_info_item">
-          <a href="#book/count/1/">
-            <div className="content">
-              <div className="title-small">Time</div>
-              <div className="title-sub"></div>
-            </div>
-          </a>
-        </li>
-
-        <li className="step_info_item">
-          <a href="#book/count/1/">
-            <div className="content">
-              <div className="title-small">Confirm</div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <Step>
+        <Step.Pane name="staff" title="Staff" active>
+          <BookingStaff />
+        </Step.Pane>
+        <Step.Pane name="service" title="Service" active>
+          Day la noi dung Service
+        </Step.Pane>
+        <Step.Pane name="time" title="Time">
+          Day la noi dung Time
+        </Step.Pane>
+        <Step.Pane name="confirm" title="Confirm">
+          Day la noi dung Confirm
+        </Step.Pane>
+      </Step>
+    </>
   );
 };
 
