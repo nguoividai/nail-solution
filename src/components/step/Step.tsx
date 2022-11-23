@@ -45,7 +45,12 @@ const Step: React.FC<StepProps> = ({ children, defaultStep }) => {
               key={e?.props?.name}
               onClick={() => handleClick(e.props, index)}
             >
-              <Pane name={e?.props?.name} title={e?.props?.title} active={show === e.props.name} />
+              <Pane
+                name={e?.props?.name}
+                title={e?.props?.title}
+                sub={e.props.sub}
+                active={show === e.props.name}
+              />
             </div>
           ))}
       </div>

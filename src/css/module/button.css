@@ -40,6 +40,17 @@ button.button.white {
     border: 1px solid var(--app-color-primary-blue);
 }
 
+button.button.danger {
+    background: #fff;
+    color:  red;
+    border: 1px solid red;
+}
+
+button.button.danger:hover {
+    background: red !important;
+    color:  #fff;
+}
+
 button.button.grey {
     background: #F2F2F2;
     color: #005888;
