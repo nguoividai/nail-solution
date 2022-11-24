@@ -3,6 +3,7 @@ import { ListGroup } from 'react-bootstrap';
 import Button from 'src/components/button/Button';
 import empty from 'src/assets/images/empty.png';
 import Empty from 'src/components/empty/Empty';
+import CardContainer from 'src/components/card/CardContainer';
 
 type Service = {
   id: number;
@@ -64,67 +65,69 @@ const ServiceChoose = () => {
 
   return (
     <>
-      <div className="p-2">
-        <div className="row">
-          <div className="col-md-6">
-            <ListGroup className="box-shadow" variant="flush">
-              <ListGroup.Item
-                as="li"
-                active
-                style={{
-                  background: '#16A34A',
-                  borderColor: '#16A34A',
-                }}
-              >
-                Service choose
-              </ListGroup.Item>
-              {chooseServices &&
-                chooseServices?.map((choose) => (
-                  <ListGroup.Item key={choose.id}>
-                    {choose.name}
+      <CardContainer>
+        <div className="p-2">
+          <div className="row row-gap-2">
+            <div className="col-md-6">
+              <ListGroup className="box-shadow" variant="flush">
+                <ListGroup.Item
+                  as="li"
+                  active
+                  style={{
+                    background: '#16A34A',
+                    borderColor: '#16A34A',
+                  }}
+                >
+                  Service choose
+                </ListGroup.Item>
+                {chooseServices &&
+                  chooseServices?.map((choose) => (
+                    <ListGroup.Item key={choose.id}>
+                      {choose.name}
+                      <span className="float-right">
+                        <Button
+                          size="sm"
+                          color="danger"
+                          onClick={() => handleRemoveChooseItem(choose)}
+                        >
+                          <i className="icofont-delete"></i>
+                        </Button>
+                      </span>
+                    </ListGroup.Item>
+                  ))}
+
+                {(!chooseServices || !chooseServices?.length) && <Empty />}
+                <ListGroup.Item
+                  style={{
+                    background: '#eee',
+                    fontSize: '0.9rem',
+                  }}
+                >
+                  Total: {chooseServices?.length || 0}
+                </ListGroup.Item>
+              </ListGroup>
+            </div>
+            <div className="col-md-6">
+              <ListGroup className="box-shadow" variant="flush">
+                <ListGroup.Item as="li" active>
+                  Service
+                </ListGroup.Item>
+                {currentServices.map((service) => (
+                  <ListGroup.Item key={service.id}>
+                    {service.name}
+
                     <span className="float-right">
-                      <Button
-                        size="sm"
-                        color="danger"
-                        onClick={() => handleRemoveChooseItem(choose)}
-                      >
-                        <i className="icofont-delete"></i>
+                      <Button size="sm" color="primary" onClick={() => handleChooseItem(service)}>
+                        <i className="icofont-plus"></i> Add
                       </Button>
                     </span>
                   </ListGroup.Item>
                 ))}
-
-              {(!chooseServices || !chooseServices?.length) && <Empty />}
-              <ListGroup.Item
-                style={{
-                  background: '#eee',
-                  fontSize: '0.9rem',
-                }}
-              >
-                Total: {chooseServices?.length || 0}
-              </ListGroup.Item>
-            </ListGroup>
-          </div>
-          <div className="col-md-6">
-            <ListGroup className="box-shadow" variant="flush">
-              <ListGroup.Item as="li" active>
-                Service
-              </ListGroup.Item>
-              {currentServices.map((service) => (
-                <ListGroup.Item key={service.id}>
-                  {service.name}
-
-                  <span className="float-right">
-                    <Button size="sm" color="primary" onClick={() => handleChooseItem(service)}>
-                      <i className="icofont-plus"></i> Add
-                    </Button>
-                  </span>
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
+              </ListGroup>
+            </div>
           </div>
         </div>
-      </div>
+      </CardContainer>
     </>
   );
 };

@@ -6,7 +6,7 @@ const BookingConfirm = () => {
   return (
     <>
       <CardContainer titleClassName="text-center" title="Confirm">
-        <div className="row">
+        <div className="row row-gap-2">
           <div className="col-12 col-md-5">
             <ListGroup className="booking-confirm-list box-shadow" variant="flush">
               <ListGroup.Item>Your booking</ListGroup.Item>
@@ -28,18 +28,18 @@ const BookingConfirm = () => {
                 <Form>
                   <Form.Group className="mt-3 mb-3">
                     <Form.Label>Phone number</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your phone number" />
+                    <Form.Control required type="text" placeholder="Enter your phone number" />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Your name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your name" />
+                    <Form.Control required type="text" placeholder="Enter your name" />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Note</Form.Label>
                     <Form.Control type="text" as="textarea" rows={5} placeholder="Add your note" />
                   </Form.Group>
                   <Form.Group className="mb-3 d-flex" style={{ gap: '1rem' }}>
-                    <Form.Check type="checkbox" />
+                    <Form.Check type="checkbox" required />
                     <p style={{ fontSize: '0.85rem' }}>
                       By checking the box and clicking submit, you give NailSolution and TIFFANY
                       NAILS & SPA express written consent to contact you at the number provided for
@@ -51,7 +51,7 @@ const BookingConfirm = () => {
                     <Button className="m-2" variant="link">
                       Back
                     </Button>
-                    <Button>
+                    <Button type="submit">
                       <i className="icofont-check"></i> Submit
                     </Button>
                   </Form.Group>

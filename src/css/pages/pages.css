@@ -126,3 +126,8 @@
     font-weight: 700;
 }
 
+.slick-list img {
+    max-height: 500px;
+    object-fit: cover;
+}
+

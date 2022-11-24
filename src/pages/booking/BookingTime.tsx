@@ -17,7 +17,11 @@ const BookingTime = () => {
               <InputGroup.Text id="basic-addon1">
                 <i className="icofont-ui-calendar"></i>
               </InputGroup.Text>
-              <Form.Control type="date" onChange={(e) => setDate(e.target.value)} />
+              <Form.Control
+                style={{ maxWidth: 150 }}
+                type="date"
+                onChange={(e) => setDate(e.target.value)}
+              />
             </InputGroup>
           </div>
           {date && (
