@@ -1,5 +1,6 @@
 import React from 'react';
 import Step from 'src/components/step/Step';
+import BookingConfirm from '../booking/BookingConfirm';
 import BookingStaff from '../booking/BookingStaff';
 import BookingTime from '../booking/BookingTime';
 import ServiceChoose from '../booking/ServiceChoose';
@@ -8,17 +9,17 @@ const B2CStep = () => {
   return (
     <>
       <Step>
-        <Step.Pane name="staff" title="Staff" sub="(Nancy)" active>
+        <Step.Pane style={{ width: '25vw' }} name="staff" title="Staff" sub="(Nancy)" active>
           <BookingStaff />
         </Step.Pane>
-        <Step.Pane name="service" title="Service" active>
+        <Step.Pane style={{ width: '25vw' }} name="service" title="Service" active>
           <ServiceChoose />
         </Step.Pane>
-        <Step.Pane name="time" title="Time">
+        <Step.Pane style={{ width: '25vw' }} name="time" title="Time">
           <BookingTime />
         </Step.Pane>
-        <Step.Pane name="confirm" title="Confirm">
-          Day la noi dung Confirm
+        <Step.Pane style={{ width: '25vw' }} name="confirm" title="Confirm">
+          <BookingConfirm />
         </Step.Pane>
       </Step>
     </>

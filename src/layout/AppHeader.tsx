@@ -38,7 +38,7 @@ const AppHeader = () => {
           </List.ListItem>
           <List.ListItem className="open-hour">
             <span className="d-block open-text">Open</span>
-            Accepting DoorDash orders until 11:39 PM
+            Accepting DoorDash orders until 18:30 PM
           </List.ListItem>
         </List>
       </div>

@@ -6,6 +6,7 @@ type PaneProps = {
   sub?: string;
   active?: boolean;
   name: string;
+  style?: React.CSSProperties;
 };
 
 type StepProps = {
@@ -13,10 +14,10 @@ type StepProps = {
   defaultStep?: number;
 };
 
-const Pane: React.FC<PaneProps> = ({ title, active, name, sub }) => {
+const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
   return (
     <>
-      <div key={name} className={`${active ? 'active' : ''}`}>
+      <div style={style} key={name} className={`${active ? 'active' : ''}`}>
         <div className="content">
           <div className="title-small">{title}</div>
           <div className="title-sub">{sub}</div>
@@ -41,6 +42,7 @@ const Step: React.FC<StepProps> = ({ children, defaultStep }) => {
         {children &&
           children?.map((e, index) => (
             <div
+              style={e.props.style}
               className={`step_info_item ${index <= +step ? 'active' : ''}`}
               key={e?.props?.name}
               onClick={() => handleClick(e.props, index)}

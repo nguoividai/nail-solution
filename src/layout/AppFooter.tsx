@@ -23,7 +23,7 @@ const AppFooter = () => {
           <li className="list-item">Terms of Services</li>
         </ul>
       </div>
-      <div className="d-none d-md-block footer-center mt-2">
+      {/* <div className="d-none d-md-block footer-center mt-2">
         <ul className="list list-horizontal desktop">
           <li className="list-item">About us</li>
           <li className="list-item">Contact</li>
@@ -37,7 +37,7 @@ const AppFooter = () => {
           <SocialLink size="sm" icon="icofont-linkedin" />
           <SocialLink size="sm" icon="icofont-twitter" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
