@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import Button from 'src/components/button/Button';
 import empty from 'src/assets/images/empty.png';
 import Empty from 'src/components/empty/Empty';
 import CardContainer from 'src/components/card/CardContainer';
+import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
+import { setBookingForm } from 'src/features/booking/actions';
 
 type Service = {
   id: number;
@@ -50,8 +52,10 @@ const services: Service[] = [
 ];
 
 const ServiceChoose = () => {
+  const { bookingForm } = useAppSelector((s) => s.booking);
   const [currentServices, setCurrentServices] = useState<Service[]>(services);
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
+  const dispatch = useAppDispatch();
 
   const handleChooseItem = (item: Service) => {
     setChooseServices((prev) => [item, ...prev]);
@@ -62,6 +66,19 @@ const ServiceChoose = () => {
     setCurrentServices((prev) => [item, ...prev]);
     setChooseServices((prev) => prev?.filter((e) => e.id !== item.id));
   };
+
+  const setServices = () => {
+    dispatch(setBookingForm({ services: chooseServices, step: 2 }));
+  };
+
+  useEffect(() => {
+    if (bookingForm?.services && bookingForm?.services?.length > 0) {
+      setChooseServices([]);
+      for (let i in bookingForm.services) {
+        handleChooseItem(bookingForm.services[+i]);
+      }
+    }
+  }, [bookingForm?.services]);
 
   return (
     <>
@@ -98,12 +115,19 @@ const ServiceChoose = () => {
 
                 {(!chooseServices || !chooseServices?.length) && <Empty />}
                 <ListGroup.Item
+                  className="d-flex align-items-center"
                   style={{
                     background: '#eee',
                     fontSize: '0.9rem',
+                    justifyContent: 'space-between',
                   }}
                 >
                   Total: {chooseServices?.length || 0}
+                  <span>
+                    <Button size="sm" color="primary" onClick={setServices}>
+                      Save <i className="icofont-thin-double-right"></i>
+                    </Button>
+                  </span>
                 </ListGroup.Item>
               </ListGroup>
             </div>

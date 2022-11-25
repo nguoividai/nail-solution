@@ -1,8 +1,11 @@
+import dayjs from 'dayjs';
 import React from 'react';
-import { Button, Card, Form, ListGroup } from 'react-bootstrap';
+import { Alert, Button, Card, Form, ListGroup } from 'react-bootstrap';
 import CardContainer from 'src/components/card/CardContainer';
+import { useAppSelector } from 'src/types/redux.types';
 
 const BookingConfirm = () => {
+  const { bookingForm } = useAppSelector((s) => s.booking);
   return (
     <>
       <CardContainer titleClassName="text-center" title="Confirm">
@@ -11,14 +14,32 @@ const BookingConfirm = () => {
             <ListGroup className="booking-confirm-list box-shadow" variant="flush">
               <ListGroup.Item>Your booking</ListGroup.Item>
               <ListGroup.Item>
-                Date: <strong>Tuesday Nov-29-2022 12:30 PM </strong>
+                Date:{' '}
+                <strong>
+                  {bookingForm?.time
+                    ? dayjs(bookingForm.time).format('dddd, MMMM D, YYYY h:mm A')
+                    : ''}
+                </strong>
               </ListGroup.Item>
               <ListGroup.Item>
-                Tech: <strong>Nancy</strong>
+                Tech: <strong>{bookingForm?.staff}</strong>
               </ListGroup.Item>
-              <ListGroup.Item>
-                Services: <strong>NAIL FULLSET, DIP FULLSET</strong>
-              </ListGroup.Item>
+              {bookingForm?.services && bookingForm?.services?.length > 0 && (
+                <ListGroup.Item>
+                  Services:{' '}
+                  <strong>
+                    {bookingForm?.services &&
+                      bookingForm?.services?.length > 0 &&
+                      bookingForm.services.map((e) => e.name).join(', ')}
+                  </strong>
+                </ListGroup.Item>
+              )}
+              {!bookingForm?.services ||
+                (!bookingForm?.services?.length && (
+                  <ListGroup.Item>
+                    <Alert variant="danger">Please choose services</Alert>
+                  </ListGroup.Item>
+                ))}
             </ListGroup>
           </div>
           <div className="col-12 col-md-7">
@@ -47,17 +68,19 @@ const BookingConfirm = () => {
                       required to make a purchase. Reply STOP to stop receiving text messages
                     </p>
                   </Form.Group>
-                  <Form.Group className="text-right">
-                    <Button className="m-2" variant="link">
+                  {bookingForm?.services && bookingForm?.services?.length > 0 && (
+                    <Form.Group className="text-right">
+                      {/* <Button className="m-2" variant="link">
                       Back
-                    </Button>
-                    <Button type="submit">
-                      <i className="icofont-check"></i> Submit
-                    </Button>
-                  </Form.Group>
+                    </Button> */}
+                      <Button type="submit">
+                        <i className="icofont-check"></i> Submit
+                      </Button>
+                    </Form.Group>
+                  )}
                 </Form>
               </Card.Body>
-            </Card>{' '}
+            </Card>
           </div>
         </div>
       </CardContainer>

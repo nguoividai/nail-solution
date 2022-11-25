@@ -46,6 +46,12 @@ button.button.danger {
     border: 1px solid red;
 }
 
+button.button.green {
+    background: var(--app-color-text-4);
+    color: #fff ;
+    border: 1px solid var(--app-color-text-4);
+}
+
 button.button.danger:hover {
     background: red !important;
     color:  #fff;

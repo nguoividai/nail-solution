@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type PaneProps = {
   children?: React.ReactNode;
@@ -12,6 +12,7 @@ type PaneProps = {
 type StepProps = {
   children?: React.ReactElement[];
   defaultStep?: number;
+  disabledFromStep?: number;
 };
 
 const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
@@ -27,14 +28,23 @@ const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
   );
 };
 
-const Step: React.FC<StepProps> = ({ children, defaultStep }) => {
+const Step: React.FC<StepProps> = ({ children, defaultStep, disabledFromStep }) => {
   const [show, setShow] = useState<string>(children?.[0]?.props?.name);
   const [step, setStep] = useState<number>(defaultStep || 0);
 
   const handleClick = (item: PaneProps, index: number) => {
+    if (disabledFromStep !== undefined && +disabledFromStep >= 0 && index > disabledFromStep) {
+      return;
+    }
     setShow(item.name);
     setStep(index);
   };
+
+  useEffect(() => {
+    const changeStep = defaultStep || 0;
+    setStep(changeStep);
+    setShow(children?.[changeStep]?.props?.name);
+  }, [defaultStep, children]);
 
   return (
     <div className="booking-info">

@@ -3,7 +3,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
   shape?: 'circle' | 'normal';
-  color?: 'primary' | 'link' | 'white' | 'grey' | 'danger';
+  color?: 'primary' | 'link' | 'white' | 'grey' | 'danger' | 'green';
   size?: 'sm' | 'md' | 'lg';
 };
 

@@ -3,6 +3,8 @@ import CardContainer from 'src/components/card/CardContainer';
 import CardTechnician from 'src/components/card/CardTechnician';
 import avatar from 'src/assets/images/staff.png';
 import Button from 'src/components/button/Button';
+import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
+import { setBookingForm } from 'src/features/booking/actions';
 
 const seeders = [
   {
@@ -34,6 +36,13 @@ const seeders = [
 ];
 
 const BookingStaff = () => {
+  const { bookingForm } = useAppSelector((s) => s.booking);
+  const dispatch = useAppDispatch();
+
+  const setStaff = (staff: string) => {
+    dispatch(setBookingForm({ staff, step: 1 }));
+  };
+
   return (
     <>
       <CardContainer titleClassName="text-center" title="Choose staff">
@@ -46,7 +55,9 @@ const BookingStaff = () => {
                 description={employee.description}
                 action={
                   <div className="text-right">
-                    <Button color="primary">Book me</Button>
+                    <Button color="primary" onClick={() => setStaff(employee.name)}>
+                      Book me
+                    </Button>
                   </div>
                 }
               />
