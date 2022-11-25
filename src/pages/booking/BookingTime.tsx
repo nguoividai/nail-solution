@@ -7,6 +7,7 @@ import { setBookingForm } from 'src/features/booking/actions';
 import { convertTimeToNumber } from 'src/helpers/date.helpers';
 import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
 import { generateTimeInDay } from './services/booking.services';
+import Calendar from 'react-calendar';
 
 const BookingTime = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
@@ -32,33 +33,30 @@ const BookingTime = () => {
     <>
       <CardContainer titleClassName="text-center" title="Choose date time">
         <div className="row row-gap-2">
-          <div className="col-12">
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="basic-addon1">
-                <i className="icofont-ui-calendar"></i>
-              </InputGroup.Text>
-
-              <Form.Control
-                style={{ maxWidth: 150 }}
-                type="date"
-                onChange={(e) => setDate(e.target.value)}
-                defaultValue={date ? new Date(date).toISOString().substring(0, 10) : undefined}
-              />
-            </InputGroup>
+          <div className="col-12 col-md-5">
+            <Calendar
+              onChange={(value: Date) => setDate(value.toISOString())}
+              value={date ? new Date(date) : null}
+              tileDisabled={({ activeStartDate, date, view }) => {
+                return dayjs(new Date()).isAfter(date, 'day');
+              }}
+            />
           </div>
           {date && (
-            <div className="col-12">
+            <div className="col-12 col-md-7">
               <div className="row row-gap-1">
+                <div className="text-center">{dayjs(date).format('DD-MM-YYYY')}</div>
                 {timeWorkings.map((time) => (
                   <div key={time.key} className="col-3 col-xl-2">
                     <Button
-                      color={
-                        time.key === convertTimeToNumber(new Date(date))
-                          ? 'green'
-                          : time.key < 12
-                          ? 'primary'
-                          : undefined
+                      disabled={
+                        dayjs(date).isSame(new Date(), 'day') &&
+                        dayjs(date)
+                          .hour(Math.floor(time.key))
+                          .minute((time.key % 1) * 60)
+                          .isBefore(new Date())
                       }
+                      color={time.key === convertTimeToNumber(new Date(date)) ? 'green' : 'primary'}
                       onClick={() => setDateTime(time.key)}
                     >
                       <i className="icofont-ui-clock"></i> {time.name}

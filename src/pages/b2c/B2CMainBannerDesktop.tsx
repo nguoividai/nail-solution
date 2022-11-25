@@ -5,7 +5,7 @@ import banner from 'src/assets/images/bg.jpg';
 const B2CMainBanner = () => {
   return (
     <SliderSimple
-      className="d-none d-md-block d-lg-block d-xl-block hompage-banner"
+      className="hompage-banner"
       settings={{
         slidesToShow: 1,
         slidesToScroll: 1,

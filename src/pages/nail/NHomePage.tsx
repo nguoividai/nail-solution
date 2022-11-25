@@ -9,8 +9,6 @@ const NHomePage = () => {
     <>
       <B2CMainBannerDesktop />
 
-      {JSON.stringify(bookingForm)}
-
       <B2CStep />
     </>
   );

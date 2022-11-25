@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
 import { Provider } from 'react-redux';
+import 'react-calendar/dist/Calendar.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
