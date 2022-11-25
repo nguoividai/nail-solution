@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Step from 'src/components/step/Step';
 import { useAppSelector } from 'src/types/redux.types';
 import BookingConfirm from '../booking/BookingConfirm';
@@ -10,9 +10,18 @@ import ServiceChoose from '../booking/ServiceChoose';
 const B2CStep = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
 
+  useEffect(() => {
+    const element_to_scroll_to = document.querySelector('#main-step');
+    element_to_scroll_to?.scrollIntoView();
+  }, [bookingForm?.step]);
+
   return (
     <>
-      <Step defaultStep={bookingForm?.step || 0} disabledFromStep={bookingForm?.maxStep || 0}>
+      <Step
+        id="main-step"
+        defaultStep={bookingForm?.step || 0}
+        disabledFromStep={bookingForm?.maxStep || 0}
+      >
         <Step.Pane
           style={{ width: '25vw' }}
           name="staff"

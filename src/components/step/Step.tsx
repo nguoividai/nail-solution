@@ -13,6 +13,7 @@ type StepProps = {
   children?: React.ReactElement[];
   defaultStep?: number;
   disabledFromStep?: number;
+  id?: string;
 };
 
 const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
@@ -28,7 +29,7 @@ const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
   );
 };
 
-const Step: React.FC<StepProps> = ({ children, defaultStep, disabledFromStep }) => {
+const Step: React.FC<StepProps> = ({ id, children, defaultStep, disabledFromStep }) => {
   const [show, setShow] = useState<string>(children?.[0]?.props?.name);
   const [step, setStep] = useState<number>(defaultStep || 0);
 
@@ -47,7 +48,7 @@ const Step: React.FC<StepProps> = ({ children, defaultStep, disabledFromStep }) 
   }, [defaultStep, children]);
 
   return (
-    <div className="booking-info">
+    <div id={id} className="booking-info">
       <div className="booking-step clearfix">
         {children &&
           children?.map((e, index) => (

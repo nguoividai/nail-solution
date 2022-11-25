@@ -165,3 +165,7 @@ abbr[title] {
   text-decoration: none !important;
   -webkit-text-decoration:  none !important;
 }
+
+html {
+  scroll-behavior: smooth;
+}
