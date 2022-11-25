@@ -8,13 +8,17 @@ import reportWebVitals from './reportWebVitals';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import store from './store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <Suspense fallback="loading">
-      <App />
-    </Suspense>
+    <Provider store={store}>
+      <Suspense fallback="loading">
+        <App />
+      </Suspense>
+    </Provider>
   </React.StrictMode>
 );
 
