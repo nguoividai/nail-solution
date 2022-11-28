@@ -36,6 +36,29 @@
     color: #fff
  }
 
+.booking-info .step_info_item.none-disabled:not(.active){
+    background: var(--app-color-bg-4) ;
+ }
+
+.booking-info .step_info_item.none-disabled:not(.active):after{
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0;
+    top: 45px;
+    height: 100%;
+    border-top: 44px solid;
+    border-left: 10px solid;
+    border-bottom: 44px solid;
+    left: 100%;
+    margin-top: inherit;
+    transform: translateY(-50%);
+    background: rgba(52, 48, 65, 0);
+    border-top-color: rgba(52, 48, 65, 0);
+    border-left-color: var(--app-color-bg-4);
+    border-bottom-color: rgba(52, 48, 65, 0);
+ }
+
 .booking-info .booking-step .step_info_item.active:after {
     content: "";
     position: absolute;

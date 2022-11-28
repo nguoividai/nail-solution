@@ -62,7 +62,9 @@ const Step: React.FC<StepProps> = ({
           children?.map((e, index) => (
             <div
               style={e.props.style}
-              className={`step_info_item ${index <= +step ? 'active' : ''}`}
+              className={`step_info_item ${
+                index <= +step ? 'active' : index <= (disabledFromStep || 0) ? 'none-disabled' : ''
+              }`}
               key={e?.props?.name}
               onClick={() => handleClick(e.props, index)}
             >
