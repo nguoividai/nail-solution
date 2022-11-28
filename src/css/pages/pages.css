@@ -131,3 +131,42 @@
     object-fit: cover;
 }
 
+/* B2C Footer Mobile */
+@media screen and (max-width: 768px) { 
+    .footer-mobile {
+        height: 50px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #fff;
+        z-index: 10;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .footer-mobile .back-action {
+        width: 30%;
+        display: flex;
+        justify-content: start;
+    }
+
+    .footer-mobile .helper {
+        width: 40%;
+        text-align: center;
+        color: var( --app-color-text-3);
+    }
+
+    .footer-mobile .next-action {
+        width: 30%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .app-footer {
+        padding-bottom: 50px;
+    }
+}
+

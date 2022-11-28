@@ -169,3 +169,7 @@ abbr[title] {
 html {
   scroll-behavior: smooth;
 }
+
+.btn.btn-link {
+  text-decoration: none;
+}

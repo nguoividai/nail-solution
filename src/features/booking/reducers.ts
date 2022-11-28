@@ -4,7 +4,7 @@
  */
 
 import { createReducer } from '@reduxjs/toolkit';
-import { setBookingForm } from './actions';
+import { setBookingForm, setCurrentStep } from './actions';
 import { getMaxStep } from './helpers';
 import { BookingReducer } from './types';
 
@@ -22,6 +22,9 @@ export const bookingReducer = createReducer(initialState, (builder) => {
         ...action.payload,
         maxStep: getMaxStep(state.bookingForm?.maxStep, action.payload?.step),
       };
+    })
+    .addCase(setCurrentStep, (state, action) => {
+      state.bookingForm = { ...state.bookingForm, step: action?.payload };
     })
     .addDefaultCase((state, action) => {});
 });

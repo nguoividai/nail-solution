@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 type PaneProps = {
   children?: React.ReactNode;
@@ -14,6 +14,7 @@ type StepProps = {
   defaultStep?: number;
   disabledFromStep?: number;
   id?: string;
+  onChangeStep?: (step: number) => void;
 };
 
 const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
@@ -29,7 +30,13 @@ const Pane: React.FC<PaneProps> = ({ title, active, name, sub, style }) => {
   );
 };
 
-const Step: React.FC<StepProps> = ({ id, children, defaultStep, disabledFromStep }) => {
+const Step: React.FC<StepProps> = ({
+  id,
+  children,
+  defaultStep,
+  disabledFromStep,
+  onChangeStep,
+}) => {
   const [show, setShow] = useState<string>(children?.[0]?.props?.name);
   const [step, setStep] = useState<number>(defaultStep || 0);
 
@@ -39,6 +46,7 @@ const Step: React.FC<StepProps> = ({ id, children, defaultStep, disabledFromStep
     }
     setShow(item.name);
     setStep(index);
+    onChangeStep?.(index);
   };
 
   useEffect(() => {
@@ -74,4 +82,4 @@ const Step: React.FC<StepProps> = ({ id, children, defaultStep, disabledFromStep
   );
 };
 
-export default Object.assign(Step, { Pane });
+export default Object.assign(React.memo(Step), { Pane: React.memo(Pane) });
