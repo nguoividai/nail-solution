@@ -2,10 +2,17 @@ import dayjs from 'dayjs';
 import React from 'react';
 import { Alert, Button, Card, Form, ListGroup } from 'react-bootstrap';
 import CardContainer from 'src/components/card/CardContainer';
-import { useAppSelector } from 'src/types/redux.types';
+import { setCurrentStep } from 'src/features/booking/actions';
+import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
 
 const BookingConfirm = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
+  const dispatch = useAppDispatch();
+
+  const changeStep = (step: number) => {
+    dispatch(setCurrentStep(step));
+  };
+
   return (
     <>
       <CardContainer titleClassName="text-center" title="Confirm">
@@ -20,9 +27,23 @@ const BookingConfirm = () => {
                     ? dayjs(bookingForm.time).format('dddd, MMMM D, YYYY h:mm A')
                     : ''}
                 </strong>
+                <Button
+                  style={{ fontSize: '0.75rem', float: 'right' }}
+                  variant="link"
+                  onClick={() => changeStep(2)}
+                >
+                  Change
+                </Button>
               </ListGroup.Item>
               <ListGroup.Item>
                 Tech: <strong>{bookingForm?.staff}</strong>
+                <Button
+                  style={{ fontSize: '0.75rem', float: 'right' }}
+                  variant="link"
+                  onClick={() => changeStep(0)}
+                >
+                  Change
+                </Button>
               </ListGroup.Item>
               {bookingForm?.services && bookingForm?.services?.length > 0 && (
                 <ListGroup.Item>
@@ -32,12 +53,26 @@ const BookingConfirm = () => {
                       bookingForm?.services?.length > 0 &&
                       bookingForm.services.map((e) => e.name).join(', ')}
                   </strong>
+                  <Button
+                    style={{ fontSize: '0.75rem', float: 'right' }}
+                    variant="link"
+                    onClick={() => changeStep(1)}
+                  >
+                    Change
+                  </Button>
                 </ListGroup.Item>
               )}
               {!bookingForm?.services ||
                 (!bookingForm?.services?.length && (
                   <ListGroup.Item>
                     <Alert variant="danger">Please choose services</Alert>
+                    <Button
+                      style={{ fontSize: '0.75rem', float: 'right' }}
+                      variant="link"
+                      onClick={() => changeStep(1)}
+                    >
+                      Change
+                    </Button>
                   </ListGroup.Item>
                 ))}
             </ListGroup>
