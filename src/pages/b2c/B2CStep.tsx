@@ -17,8 +17,12 @@ const B2CStep = () => {
   };
 
   useEffect(() => {
-    const element_to_scroll_to = document.querySelector('#main-step');
-    element_to_scroll_to?.scrollIntoView();
+    const element_to_scroll_to = document.querySelector('.booking-step');
+    element_to_scroll_to?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+    // window.scrollBy(0, -100);
   }, [bookingForm?.step]);
 
   return (
