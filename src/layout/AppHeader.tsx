@@ -15,10 +15,15 @@ const AppHeader = () => {
         <SideNavToggle />
       </div>
       <div className="logo text-center d-block">
-        <strong className="d-block">TIFFANY NAILS & SPA</strong>
+        {/* <strong className="d-block">TIFFANY NAILS & SPA</strong>
         <span className="d-block" style={{ marginTop: 5 }}>
           (720) 283-6777
-        </span>
+        </span> */}
+        <img
+          style={{ width: 125 }}
+          src={require('src/assets/images/top-logo-black.png')}
+          alt="logo"
+        />
       </div>
 
       <div className="nav-link">
@@ -34,7 +39,7 @@ const AppHeader = () => {
           </List.ListItem> */}
           <List.ListItem className="open-hour">
             <span className="d-block open-text">Address</span>
-            40 W LITTLETON BLVD #205A, LITTLETON CO 80120
+            1240 W LITTLETON BLVD #100A, LITTLETON CO 80120
           </List.ListItem>
           <List.ListItem className="open-hour">
             <span className="d-block open-text">Open</span>

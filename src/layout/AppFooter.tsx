@@ -1,15 +1,15 @@
 import React from 'react';
-import Button from '../components/button/Button';
-import List from '../components/list/List';
-import SocialLink from '../components/social/SocialLink';
-import logo from 'src/assets/images/logo.png';
 
 const AppFooter = () => {
   return (
     <div role="contentinfo" className="app-footer">
       <div className="row">
         <div className="col-12">
-          <img className="logo" src={logo} alt="logo" style={{ width: 125 }} />
+          <img
+            style={{ width: 125 }}
+            src={require('src/assets/images/top-logo-black.png')}
+            alt="logo"
+          />
           {/* <p className="description-logo">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum dolor, fermentum
             etiam nisl.
