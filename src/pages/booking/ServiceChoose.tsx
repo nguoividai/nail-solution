@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ListGroup } from 'react-bootstrap';
+import { Col, Form, ListGroup, Row } from 'react-bootstrap';
 import Button from 'src/components/button/Button';
-import empty from 'src/assets/images/empty.png';
 import Empty from 'src/components/empty/Empty';
 import CardContainer from 'src/components/card/CardContainer';
 import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
@@ -9,50 +8,13 @@ import { setBookingForm } from 'src/features/booking/actions';
 import { Service } from 'src/features/services/types';
 import { getServices } from 'src/features/services/actions';
 import useSiteUrl from 'src/hooks/useSiteUrl';
-
-const services: Service[] = [
-  {
-    serviceid: 1,
-    servicename: 'DIP NAILS',
-  },
-  {
-    serviceid: 2,
-    servicename: 'GEL POLISH',
-  },
-  {
-    serviceid: 3,
-    servicename: 'MANICURE',
-  },
-  {
-    serviceid: 4,
-    servicename: 'MANICURE GEL',
-  },
-  {
-    serviceid: 5,
-    servicename: 'NAIL FILL',
-  },
-  {
-    serviceid: 6,
-    servicename: 'NAIL FULLSET',
-  },
-  {
-    serviceid: 7,
-    servicename: 'PEDICURE',
-  },
-  {
-    serviceid: 8,
-    servicename: 'WAXING',
-  },
-  {
-    serviceid: 9,
-    servicename: 'X.OTHER SERVICES',
-  },
-];
+import ServiceSearch from './services/ServiceSearch';
 
 const ServiceChoose = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
   const { services } = useAppSelector((s) => s.service);
   const [currentServices, setCurrentServices] = useState<Service[]>(services || []);
+  const [currentFilterServices, setCurrentFilterServices] = useState<Service[]>(services || []);
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
   const dispatch = useAppDispatch();
   const site_url = useSiteUrl();
@@ -69,6 +31,19 @@ const ServiceChoose = () => {
 
   const setServices = () => {
     dispatch(setBookingForm({ services: chooseServices, step: 2 }));
+  };
+
+  const handleFilterCurrentServices = (value: string) => {
+    if (value) {
+      setCurrentFilterServices(
+        currentServices?.filter(
+          (e) =>
+            e.servicename && e.servicename.toLocaleLowerCase()?.indexOf(value.toLowerCase()) >= 0
+        )
+      );
+    } else {
+      setCurrentFilterServices([...currentServices]);
+    }
   };
 
   useEffect(() => {
@@ -91,6 +66,10 @@ const ServiceChoose = () => {
       }
     }
   }, [bookingForm?.services]);
+
+  useEffect(() => {
+    setCurrentFilterServices([...currentServices]);
+  }, [currentServices]);
 
   return (
     <>
@@ -145,16 +124,25 @@ const ServiceChoose = () => {
             </div>
             <div className="col-md-6">
               <ListGroup className="box-shadow" variant="flush">
-                <ListGroup.Item as="li" active>
-                  Service
+                <ListGroup.Item as="div" active>
+                  <Row className="align-items-center">
+                    <Col xs="3">Service</Col>
+                    <Col xs="9">
+                      <Form.Control
+                        type="text"
+                        placeholder="Search"
+                        onChange={(e) => handleFilterCurrentServices(e.target.value)}
+                      />
+                    </Col>
+                  </Row>
                 </ListGroup.Item>
                 <div
                   style={{
                     overflow: 'auto',
-                    maxHeight: 400,
+                    height: 400,
                   }}
                 >
-                  {currentServices.map((service) => (
+                  {currentFilterServices.map((service) => (
                     <ListGroup.Item key={service.serviceid}>
                       <div className="service-item">
                         <div className="service-item--name">{service.servicename}</div>
