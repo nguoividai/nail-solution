@@ -36,7 +36,7 @@ const BookingConfirm = () => {
                 </Button>
               </ListGroup.Item>
               <ListGroup.Item>
-                Tech: <strong>{bookingForm?.staff}</strong>
+                Tech: <strong>{bookingForm?.staff?.name}</strong>
                 <Button
                   style={{ fontSize: '0.75rem', float: 'right' }}
                   variant="link"

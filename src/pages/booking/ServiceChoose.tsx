@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Form, ListGroup, Row } from 'react-bootstrap';
+import { Col, Form, ListGroup, Row, Spinner } from 'react-bootstrap';
 import Button from 'src/components/button/Button';
 import Empty from 'src/components/empty/Empty';
 import CardContainer from 'src/components/card/CardContainer';
@@ -12,7 +12,8 @@ import ServiceSearch from './services/ServiceSearch';
 
 const ServiceChoose = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
-  const { services } = useAppSelector((s) => s.service);
+  const { services, ui } = useAppSelector((s) => s.service);
+  const { loading } = ui || {};
   const [currentServices, setCurrentServices] = useState<Service[]>(services || []);
   const [currentFilterServices, setCurrentFilterServices] = useState<Service[]>(services || []);
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
@@ -142,6 +143,11 @@ const ServiceChoose = () => {
                     height: 400,
                   }}
                 >
+                  {loading && (
+                    <ListGroup.Item className="d-flex align-items-center gap-3">
+                      <Spinner animation="grow" variant="primary" /> Loading...
+                    </ListGroup.Item>
+                  )}
                   {currentFilterServices.map((service) => (
                     <ListGroup.Item key={service.serviceid}>
                       <div className="service-item">

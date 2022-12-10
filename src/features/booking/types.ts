@@ -3,11 +3,12 @@
  */
 
 import { Service } from '../services/types';
+import { Technician } from '../technician/types';
 
 export interface BookingForm {
   step?: number;
   maxStep?: number;
-  staff?: string;
+  staff?: Technician;
   services?: Service[];
   time?: string;
   info?: {

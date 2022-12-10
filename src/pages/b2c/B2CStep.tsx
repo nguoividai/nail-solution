@@ -37,7 +37,7 @@ const B2CStep = () => {
           style={{ width: '25vw' }}
           name="staff"
           title="1. Staff"
-          sub={bookingForm?.staff}
+          sub={bookingForm?.staff?.name}
           active
         >
           <BookingStaff />
