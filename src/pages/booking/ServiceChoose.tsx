@@ -6,70 +6,82 @@ import Empty from 'src/components/empty/Empty';
 import CardContainer from 'src/components/card/CardContainer';
 import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
 import { setBookingForm } from 'src/features/booking/actions';
-
-type Service = {
-  id: number;
-  name: string;
-};
+import { Service } from 'src/features/services/types';
+import { getServices } from 'src/features/services/actions';
+import useSiteUrl from 'src/hooks/useSiteUrl';
 
 const services: Service[] = [
   {
-    id: 1,
-    name: 'DIP NAILS',
+    serviceid: 1,
+    servicename: 'DIP NAILS',
   },
   {
-    id: 2,
-    name: 'GEL POLISH',
+    serviceid: 2,
+    servicename: 'GEL POLISH',
   },
   {
-    id: 3,
-    name: 'MANICURE',
+    serviceid: 3,
+    servicename: 'MANICURE',
   },
   {
-    id: 4,
-    name: 'MANICURE GEL',
+    serviceid: 4,
+    servicename: 'MANICURE GEL',
   },
   {
-    id: 5,
-    name: 'NAIL FILL',
+    serviceid: 5,
+    servicename: 'NAIL FILL',
   },
   {
-    id: 6,
-    name: 'NAIL FULLSET',
+    serviceid: 6,
+    servicename: 'NAIL FULLSET',
   },
   {
-    id: 7,
-    name: 'PEDICURE',
+    serviceid: 7,
+    servicename: 'PEDICURE',
   },
   {
-    id: 8,
-    name: 'WAXING',
+    serviceid: 8,
+    servicename: 'WAXING',
   },
   {
-    id: 9,
-    name: 'X.OTHER SERVICES',
+    serviceid: 9,
+    servicename: 'X.OTHER SERVICES',
   },
 ];
 
 const ServiceChoose = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
-  const [currentServices, setCurrentServices] = useState<Service[]>(services);
+  const { services } = useAppSelector((s) => s.service);
+  const [currentServices, setCurrentServices] = useState<Service[]>(services || []);
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
   const dispatch = useAppDispatch();
+  const site_url = useSiteUrl();
 
   const handleChooseItem = (item: Service) => {
     setChooseServices((prev) => [item, ...prev]);
-    setCurrentServices((prev) => prev?.filter((e) => e.id !== item.id));
+    setCurrentServices((prev) => prev?.filter((e) => e.serviceid !== item.serviceid));
   };
 
   const handleRemoveChooseItem = (item: Service) => {
     setCurrentServices((prev) => [item, ...prev]);
-    setChooseServices((prev) => prev?.filter((e) => e.id !== item.id));
+    setChooseServices((prev) => prev?.filter((e) => e.serviceid !== item.serviceid));
   };
 
   const setServices = () => {
     dispatch(setBookingForm({ services: chooseServices, step: 2 }));
   };
+
+  useEffect(() => {
+    if (!services && site_url) {
+      dispatch(getServices({ site_url }));
+    }
+  }, [site_url, services, dispatch]);
+
+  useEffect(() => {
+    if (services && services?.length > 0) {
+      setCurrentServices([...services]);
+    }
+  }, [services]);
 
   useEffect(() => {
     if (bookingForm?.services && bookingForm?.services?.length > 0) {
@@ -99,8 +111,8 @@ const ServiceChoose = () => {
                 </ListGroup.Item>
                 {chooseServices &&
                   chooseServices?.map((choose) => (
-                    <ListGroup.Item key={choose.id}>
-                      {choose.name}
+                    <ListGroup.Item key={choose.serviceid}>
+                      {choose.servicename}
                       <span className="float-right">
                         <Button
                           size="sm"
@@ -136,17 +148,29 @@ const ServiceChoose = () => {
                 <ListGroup.Item as="li" active>
                   Service
                 </ListGroup.Item>
-                {currentServices.map((service) => (
-                  <ListGroup.Item key={service.id}>
-                    {service.name}
-
-                    <span className="float-right">
-                      <Button size="sm" color="primary" onClick={() => handleChooseItem(service)}>
-                        <i className="icofont-plus"></i> Add
-                      </Button>
-                    </span>
-                  </ListGroup.Item>
-                ))}
+                <div
+                  style={{
+                    overflow: 'auto',
+                    maxHeight: 400,
+                  }}
+                >
+                  {currentServices.map((service) => (
+                    <ListGroup.Item key={service.serviceid}>
+                      <div className="service-item">
+                        <div className="service-item--name">{service.servicename}</div>
+                        <div className="service-item--action">
+                          <Button
+                            size="sm"
+                            color="primary"
+                            onClick={() => handleChooseItem(service)}
+                          >
+                            <i className="icofont-plus"></i> Add
+                          </Button>
+                        </div>
+                      </div>
+                    </ListGroup.Item>
+                  ))}
+                </div>
               </ListGroup>
             </div>
           </div>

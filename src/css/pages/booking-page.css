@@ -1,0 +1,16 @@
+/* SERVICE */
+.service-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.service-item--name {
+    width: 80%;
+}
+
+.service-item--action {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}

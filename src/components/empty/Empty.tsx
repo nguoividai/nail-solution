@@ -11,7 +11,7 @@ const Empty = () => {
           padding: '0.5rem',
         }}
       >
-        <i className="icofont-ui-cart" style={{ fontSize: 128, color: '#efefef' }}></i>
+        <i className="icofont-bill-alt" style={{ fontSize: 128, color: '#efefef' }}></i>
       </div>
     </>
   );

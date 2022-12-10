@@ -2,14 +2,13 @@
  * declare types for typescript
  */
 
+import { Service } from '../services/types';
+
 export interface BookingForm {
   step?: number;
   maxStep?: number;
   staff?: string;
-  services?: {
-    id: number;
-    name: string;
-  }[];
+  services?: Service[];
   time?: string;
   info?: {
     phoneNumber?: string;

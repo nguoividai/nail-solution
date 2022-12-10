@@ -51,7 +51,7 @@ const BookingConfirm = () => {
                   <strong>
                     {bookingForm?.services &&
                       bookingForm?.services?.length > 0 &&
-                      bookingForm.services.map((e) => e.name).join(', ')}
+                      bookingForm.services.map((e) => e.servicename).join(', ')}
                   </strong>
                   <Button
                     style={{ fontSize: '0.75rem', float: 'right' }}
