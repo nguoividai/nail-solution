@@ -8,7 +8,6 @@ import { setBookingForm } from 'src/features/booking/actions';
 import { Service } from 'src/features/services/types';
 import { getServices } from 'src/features/services/actions';
 import useSiteUrl from 'src/hooks/useSiteUrl';
-import ServiceSearch from './services/ServiceSearch';
 
 const ServiceChoose = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);

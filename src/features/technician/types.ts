@@ -2,6 +2,8 @@
  * declare types for typescript
  */
 
+import { SiteUrl } from 'src/types/app.types';
+
 export interface Technician {
   adminid: string;
   name?: string;
@@ -36,6 +38,12 @@ export interface Technician {
   updated_at?: string;
 }
 
+export interface Appointment {
+  title?: string;
+  start_time?: string;
+  end_time?: string;
+}
+
 export interface TechnicianReducer {
   ui?: {
     loadingBtn?: boolean;
@@ -43,4 +51,16 @@ export interface TechnicianReducer {
     visible?: boolean;
   };
   technicians?: Technician[];
+  technician?: {
+    [technicianId: string]: {
+      [date: string]: {
+        appointments: Appointment[] | null;
+      };
+    };
+  };
 }
+
+export type AppointmentsOfTech = SiteUrl & {
+  technicianId: string;
+  date: string;
+};

@@ -4,9 +4,10 @@
  */
 
 import { takeLatest } from 'redux-saga/effects';
-import { getTechnicians } from './actions';
-import { getWorkerServices } from './workers';
+import { getAppointmentsOfTech, getTechnicians } from './actions';
+import { getWorkerAppointmentsOfTech, getWorkerServices } from './workers';
 
 export function* technicianSaga() {
   yield takeLatest(getTechnicians, getWorkerServices);
+  yield takeLatest(getAppointmentsOfTech, getWorkerAppointmentsOfTech);
 }
