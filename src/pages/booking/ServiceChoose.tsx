@@ -18,6 +18,7 @@ const ServiceChoose = () => {
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
   const dispatch = useAppDispatch();
   const site_url = useSiteUrl();
+  const [searchService, setSearchService] = useState<string>('');
 
   const handleChooseItem = (item: Service) => {
     setChooseServices((prev) => [item, ...prev]);
@@ -34,6 +35,7 @@ const ServiceChoose = () => {
   };
 
   const handleFilterCurrentServices = (value: string) => {
+    setSearchService(value);
     if (value) {
       setCurrentFilterServices(
         currentServices?.filter(
@@ -68,8 +70,19 @@ const ServiceChoose = () => {
   }, [bookingForm?.services]);
 
   useEffect(() => {
-    setCurrentFilterServices([...currentServices]);
-  }, [currentServices]);
+    console.log('change current services');
+    if (!searchService) {
+      setCurrentFilterServices([...currentServices]);
+    } else {
+      setCurrentFilterServices(
+        currentServices?.filter(
+          (e) =>
+            e.servicename &&
+            e.servicename.toLocaleLowerCase()?.indexOf(searchService.toLowerCase()) >= 0
+        )
+      );
+    }
+  }, [currentServices, searchService]);
 
   return (
     <>
