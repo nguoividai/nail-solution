@@ -115,7 +115,7 @@ font-family: Inter;
 font-size: 14px;
 }
 
-body:has(.backdrop), html:has(.backdrop) {
+body:has(.backdrop), html:has(.backdrop), html:has(.loading-backdrop) {
 overflow: hidden;
 }
 
@@ -173,4 +173,25 @@ html {
 
 .btn.btn-link {
   text-decoration: none;
+}
+
+/* page loading */
+
+.loading-backdrop {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background: #000;
+  opacity: 0.5;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#root {
+  position: relative;
 }

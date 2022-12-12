@@ -10,10 +10,12 @@ import Calendar from 'react-calendar';
 import useSiteUrl from 'src/hooks/useSiteUrl';
 import { getAppointmentsOfTech } from 'src/features/technician/actions';
 import useBusyTimeDate from 'src/hooks/useBusyTimeDate';
+import PageLoading from 'src/components/loading/PageLoading';
 
 const BookingTime = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
-  const { technician } = useAppSelector((s) => s.technician);
+  const { technician, ui } = useAppSelector((s) => s.technician);
+  const { loading } = ui || {};
   const dispatch = useAppDispatch();
   const timeWorkings = generateTimeInDay();
   const [date, setDate] = useState<string | undefined>(
@@ -62,6 +64,7 @@ const BookingTime = () => {
 
   return (
     <>
+      <PageLoading loading={loading} />
       <CardContainer titleClassName="text-center" title="Choose date time">
         <div className="row row-gap-2">
           <div className="col-12 col-md-5">
