@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
+import { timeToDecimal } from 'src/helpers/date.helpers';
 import { useAppSelector } from 'src/types/redux.types';
 
 type useBusyTimeDateProps = {
@@ -22,10 +23,12 @@ const useBusyTimeDate = (props: useBusyTimeDateProps): BusyTime[] | null => {
       technician?.[technicianId]?.[date]?.appointments!.length > 0
     ) {
       setBusyTimes(
-        technician?.[technicianId]?.[date].appointments!.map((e) => ({
-          start_time: dayjs(e.start_time).hour() + dayjs(e.start_time).minute() / 60,
-          end_time: dayjs(e.end_time).hour() + dayjs(e.end_time).minute() / 60,
-        }))
+        technician?.[technicianId]?.[date].appointments!.map((e) => {
+          return {
+            start_time: e.start_time ? timeToDecimal(e.start_time) : 0,
+            end_time: e.end_time ? timeToDecimal(e.end_time) : 0,
+          };
+        })
       );
     } else {
       setBusyTimes(null);

@@ -20,7 +20,10 @@ const BookingTime = () => {
     bookingForm?.time ? new Date(bookingForm?.time).toISOString() : undefined
   );
   const site_url = useSiteUrl();
-  const busyTimes = useBusyTimeDate({ date, technicianId: bookingForm?.staff?.adminid });
+  const busyTimes = useBusyTimeDate({
+    date: dayjs(date).format('YYYY-MM-DD'),
+    technicianId: bookingForm?.staff?.adminid,
+  });
 
   const setDateTime = (decimal: number) => {
     dispatch(
@@ -34,12 +37,11 @@ const BookingTime = () => {
     );
   };
 
-  const disabledBusyTime = (date: string) => {
+  const disabledBusyTime = (time: number) => {
     if (busyTimes) {
       for (let i in busyTimes) {
         const item = busyTimes[i];
-        const hourNumbers = dayjs(date).hour() + dayjs(date).minute() / 60;
-        return hourNumbers >= item.start_time && hourNumbers <= item.end_time;
+        return time >= item.start_time && time < item.end_time;
       }
     }
 
@@ -51,7 +53,7 @@ const BookingTime = () => {
       dispatch(
         getAppointmentsOfTech({
           site_url,
-          date: date.substring(0, 10),
+          date: dayjs(date).format('YYYY-MM-DD'),
           technicianId: bookingForm.staff.adminid,
         })
       );
@@ -60,22 +62,29 @@ const BookingTime = () => {
 
   return (
     <>
-      <div>{JSON.stringify(technician)}</div>
       <CardContainer titleClassName="text-center" title="Choose date time">
         <div className="row row-gap-2">
           <div className="col-12 col-md-5">
             <Calendar
               onChange={(value: Date) => setDate(value.toISOString())}
               value={date ? new Date(date) : null}
-              // tileDisabled={({ activeStartDate, date, view }) => {
-              //   return dayjs(new Date()).isAfter(date, 'day');
-              // }}
+              tileDisabled={({ activeStartDate, date, view }) => {
+                return dayjs(new Date()).isAfter(date, 'day');
+              }}
             />
           </div>
           {date && (
             <div className="col-12 col-md-7">
               <div className="row row-gap-1">
                 <div className="text-center">{dayjs(date).format('DD-MM-YYYY')}</div>
+                <div className="d-flex gap-5 justify-content-center p-2 mb-3 mt-3">
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="dot disabled"></span> Unavailable
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="dot active"></span> Available
+                  </div>
+                </div>
                 {timeWorkings.map((time) => (
                   <div key={time.key} className="col-3 col-xl-2">
                     <Button
@@ -85,7 +94,7 @@ const BookingTime = () => {
                             .hour(Math.floor(time.key))
                             .minute((time.key % 1) * 60)
                             .isBefore(new Date())) ||
-                        disabledBusyTime(date)
+                        disabledBusyTime(time.key)
                       }
                       color={time.key === convertTimeToNumber(new Date(date)) ? 'green' : 'primary'}
                       onClick={() => setDateTime(time.key)}
