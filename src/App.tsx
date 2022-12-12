@@ -1,9 +1,8 @@
-import React, { Suspense } from 'react';
-import logo from './logo.svg';
+import React, { Suspense, useEffect } from 'react';
 import './App.css';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-import DefaultReact from './pages/test/DefaultReact';
+import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import routes from './routes';
+import useSiteUrl from './hooks/useSiteUrl';
 
 // Containers
 const MainLayout = React.lazy(() => import('./layout/MainLayout'));

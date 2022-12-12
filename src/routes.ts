@@ -1,18 +1,11 @@
 import React from 'react';
 
-const DefaultReact = React.lazy(() => import('./pages/test/DefaultReact'));
-const Login = React.lazy(() => import('./pages/login/Login'));
-const ForgotPassword = React.lazy(() => import('./pages/forgotPassword/ForgotPassword'));
-const CreateAccount = React.lazy(() => import('./pages/createAccount/CreateAccount'));
 const NHomePage = React.lazy(() => import('./pages/nail/NHomePage'));
-const JMenu = React.lazy(() => import('./pages/jumia/JMenu'));
+const NotFound = React.lazy(() => import('./pages/404/NotFound'));
 
 const routes = [
   { path: '/', exact: true, name: 'Dashboard', element: NHomePage },
-  { path: '/menu', exact: true, name: 'Menu', element: JMenu },
-  { path: '/login', exact: true, name: 'Login', element: Login },
-  { path: '/forgot-password', exact: true, name: 'ForgotPassword', element: ForgotPassword },
-  { path: '/sign-up', exact: true, name: 'ForgotPassword', element: CreateAccount },
+  { path: '*', name: 'ForgotPassword', element: NotFound },
 ];
 
 export default routes;

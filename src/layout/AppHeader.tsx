@@ -1,14 +1,10 @@
 import React from 'react';
-import Button from '../components/button/Button';
 import List from '../components/list/List';
 import SideNavToggle from './components/SideNavToggle';
-import logo from 'src/assets/images/logo.png';
-
-import home from 'src/assets/images/jumia/icons/home.png';
-import menu from 'src/assets/images/jumia/icons/menu.png';
-import account from 'src/assets/images/jumia/icons/account.png';
+import useSiteUrl from 'src/hooks/useSiteUrl';
 
 const AppHeader = () => {
+  const siteUrl = useSiteUrl();
   return (
     <header className="app-header">
       <div className="side-nav-icon">
@@ -19,11 +15,13 @@ const AppHeader = () => {
         <span className="d-block" style={{ marginTop: 5 }}>
           (720) 283-6777
         </span> */}
-        <img
-          style={{ width: 125 }}
-          src={require('src/assets/images/top-logo-black.png')}
-          alt="logo"
-        />
+        <a href={`#/?site_url=${siteUrl}`}>
+          <img
+            style={{ width: 125 }}
+            src={require('src/assets/images/top-logo-black.png')}
+            alt="logo"
+          />
+        </a>
       </div>
 
       <div className="nav-link">
