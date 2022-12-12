@@ -10,7 +10,7 @@ const MainLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!siteUrl) {
+    if (!siteUrl || siteUrl === 'null') {
       navigate('/not-found');
     }
   }, [siteUrl, navigate]);

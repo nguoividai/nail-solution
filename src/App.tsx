@@ -1,8 +1,7 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
-import { HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import routes from './routes';
-import useSiteUrl from './hooks/useSiteUrl';
 
 // Containers
 const MainLayout = React.lazy(() => import('./layout/MainLayout'));
