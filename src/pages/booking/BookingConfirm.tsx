@@ -91,7 +91,9 @@ const BookingConfirm = () => {
                     <Form.Control required type="text" placeholder="Enter your name" />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Note</Form.Label>
+                    <Form.Label>
+                      Note <small className="text-secondary">(Optional)</small>
+                    </Form.Label>
                     <Form.Control type="text" as="textarea" rows={5} placeholder="Add your note" />
                   </Form.Group>
                   <Form.Group className="mb-3 d-flex" style={{ gap: '1rem' }}>
