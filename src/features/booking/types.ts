@@ -5,6 +5,15 @@
 import { Service } from '../services/types';
 import { Technician } from '../technician/types';
 
+export interface BookingService {
+  service_ids: string[];
+  appointment_date: string;
+  time_start: string;
+  admin_id: string;
+  phone: string;
+  name: string;
+}
+
 export interface BookingForm {
   step?: number;
   maxStep?: number;

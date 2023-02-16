@@ -12,7 +12,10 @@ const Button: React.FC<ButtonProps> = (props) => {
   return (
     <button
       {...buttonProps}
-      className={`button link ${shape === 'circle' ? 'circle' : ''} ${color || ''} ${size || ''}`}
+      className={
+        `button link ${shape === 'circle' ? 'circle' : ''} ${color || ''} ${size || ''}` +
+        props.className
+      }
     >
       {children}
     </button>

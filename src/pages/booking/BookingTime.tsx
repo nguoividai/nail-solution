@@ -93,6 +93,7 @@ const BookingTime = () => {
                 {timeWorkings.map((time) => (
                   <div key={time.key} className="col-3 col-xl-2">
                     <Button
+                      className="p-3"
                       disabled={
                         (dayjs(date).isSame(new Date(), 'day') &&
                           dayjs(date)
@@ -104,7 +105,7 @@ const BookingTime = () => {
                       color={time.key === convertTimeToNumber(new Date(date)) ? 'green' : 'primary'}
                       onClick={() => setDateTime(time.key)}
                     >
-                      <i className="icofont-ui-clock"></i> {time.name}
+                      <i className="icofont-ui-clock d-block"></i> {time.name}
                     </Button>
                   </div>
                 ))}
