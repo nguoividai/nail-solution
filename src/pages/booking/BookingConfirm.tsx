@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from 'src/types/redux.types';
 const BookingConfirm = () => {
   const { bookingForm } = useAppSelector((s) => s.booking);
   const dispatch = useAppDispatch();
+  const { shop } = useAppSelector((s) => s.shop);
+  const { name } = shop || {};
 
   const changeStep = (step: number) => {
     dispatch(setCurrentStep(step));
@@ -99,10 +101,11 @@ const BookingConfirm = () => {
                   <Form.Group className="mb-3 d-flex" style={{ gap: '1rem' }}>
                     <Form.Check type="checkbox" required />
                     <p style={{ fontSize: '0.85rem' }}>
-                      By checking the box and clicking submit, you give NailSolution and TIFFANY
-                      NAILS & SPA express written consent to contact you at the number provided for
-                      any feedback, reminder, confirmation or promotional purposes. Consent is not
-                      required to make a purchase. Reply STOP to stop receiving text messages
+                      By checking the box and clicking submit, you give{' '}
+                      <span className="font-weight-bold text-success">{name}</span> express written
+                      consent to contact you at the number provided for any feedback, reminder,
+                      confirmation or promotional purposes. Consent is not required to make a
+                      purchase. Reply STOP to stop receiving text messages
                     </p>
                   </Form.Group>
                   {bookingForm?.services && bookingForm?.services?.length > 0 && (

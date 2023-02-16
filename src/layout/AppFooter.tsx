@@ -1,15 +1,21 @@
 import React from 'react';
+import useSiteUrl from 'src/hooks/useSiteUrl';
+import { useAppSelector } from 'src/types/redux.types';
 
 const AppFooter = () => {
+  const { shop } = useAppSelector((s) => s.shop);
+  const { auth } = useAppSelector((s) => s.authentication);
+  const { token } = useSiteUrl();
+  const { url } = auth || {};
+  const { logo, name } = shop || {};
+
   return (
     <div role="contentinfo" className="app-footer">
       <div className="row">
         <div className="col-12">
-          <img
-            style={{ width: 125 }}
-            src={require('src/assets/images/top-logo-black.png')}
-            alt="logo"
-          />
+          <a href={`#/?token=${token}`}>
+            <img style={{ width: 125 }} src={url + '/img/logo/' + logo} alt={name} />
+          </a>
           {/* <p className="description-logo">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum dolor, fermentum
             etiam nisl.

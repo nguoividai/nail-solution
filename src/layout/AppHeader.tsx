@@ -1,10 +1,17 @@
 import React from 'react';
 import List from '../components/list/List';
 import SideNavToggle from './components/SideNavToggle';
+import { useAppSelector } from 'src/types/redux.types';
 import useSiteUrl from 'src/hooks/useSiteUrl';
+import { formatPhoneNumber } from 'src/helpers/common.helpers';
 
 const AppHeader = () => {
-  const siteUrl = useSiteUrl();
+  const { shop } = useAppSelector((s) => s.shop);
+  const { token } = useSiteUrl();
+  const { auth } = useAppSelector((s) => s.authentication);
+  const { url } = auth || {};
+  const { logo, numberphone, address, name } = shop || {};
+
   return (
     <header className="app-header">
       <div className="side-nav-icon">
@@ -15,12 +22,8 @@ const AppHeader = () => {
         <span className="d-block" style={{ marginTop: 5 }}>
           (720) 283-6777
         </span> */}
-        <a href={`#/?site_url=${siteUrl}`}>
-          <img
-            style={{ width: 125 }}
-            src={require('src/assets/images/top-logo-black.png')}
-            alt="logo"
-          />
+        <a href={`#/?token=${token}`}>
+          <img style={{ width: 125 }} src={url + '/img/logo/' + logo} alt={name} />
         </a>
       </div>
 
@@ -36,12 +39,18 @@ const AppHeader = () => {
             <img src={account} alt="icon" style={{ width: 20 }} /> My Account
           </List.ListItem> */}
           <List.ListItem className="open-hour">
-            <span className="d-block open-text">Address</span>
-            1240 W LITTLETON BLVD #100A, LITTLETON CO 80120
+            <span className="d-block open-text">
+              Address <i className="icofont-google-map"></i>
+            </span>
+            {address}
           </List.ListItem>
           <List.ListItem className="open-hour">
-            <span className="d-block open-text">Open</span>
-            Accepting DoorDash orders until 18:30 PM
+            <span className="d-block open-text">
+              Phone <i className="icofont-phone"></i>
+            </span>
+            <a className="text-decoration-none" href={`tel:${numberphone}`}>
+              {formatPhoneNumber(numberphone)}
+            </a>
           </List.ListItem>
         </List>
       </div>
