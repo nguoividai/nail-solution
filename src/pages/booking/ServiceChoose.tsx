@@ -17,7 +17,8 @@ const ServiceChoose = () => {
   const [currentFilterServices, setCurrentFilterServices] = useState<Service[]>(services || []);
   const [chooseServices, setChooseServices] = useState<Service[]>([]);
   const dispatch = useAppDispatch();
-  const site_url = useSiteUrl();
+  const { auth } = useAppSelector((s) => s.authentication);
+  const { url, api_token } = auth || {};
   const [searchService, setSearchService] = useState<string>('');
 
   const handleChooseItem = (item: Service) => {
@@ -49,10 +50,10 @@ const ServiceChoose = () => {
   };
 
   useEffect(() => {
-    if (!services && site_url) {
-      dispatch(getServices({ site_url }));
+    if (!services && url && api_token) {
+      dispatch(getServices({ url, api_token }));
     }
-  }, [site_url, services, dispatch]);
+  }, [url, services, dispatch, api_token]);
 
   useEffect(() => {
     if (services && services?.length > 0) {

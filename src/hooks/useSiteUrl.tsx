@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 const useSiteUrl = () => {
   const [searchParams] = useSearchParams();
 
-  return searchParams.get('site_url');
+  return { token: searchParams.get('token') };
 };
 
 export default useSiteUrl;

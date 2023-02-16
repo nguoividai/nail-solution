@@ -1,18 +1,19 @@
 import { axiosInstance } from 'src/services/axiosInstance';
 import { SiteUrl } from 'src/types/app.types';
+import { Authentication } from '../authentication/types';
 import { Appointment, Technician } from './types';
 
-export const getAPITechnicians = (action: SiteUrl) => {
+export const getAPITechnicians = (action: Authentication) => {
   return axiosInstance.get<{ technicians: Technician[] }>(
-    action.site_url + 'api/technician-list?api_token=yQMdMX6D4MeRgvR6zDRtCBAvfFixJxpL'
+    action.url + `/api/technician-list?api_token=${action.api_token}`
   );
 };
 
 export const getAPIAppointmentsOfTech = (
-  action: SiteUrl & { date: string; technicianId: string }
+  action: Authentication & { date: string; technicianId: string }
 ) => {
   return axiosInstance.get<{ appointments: Appointment[]; date?: string | null }>(
-    action.site_url +
-      `api/technicians/${action.technicianId}/appointments?api_token=yQMdMX6D4MeRgvR6zDRtCBAvfFixJxpL&date=${action.date}`
+    action.url +
+      `/api/technicians/${action.technicianId}/appointments?api_token=${action.api_token}&date=${action.date}`
   );
 };

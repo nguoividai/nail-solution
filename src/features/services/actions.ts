@@ -3,9 +3,9 @@
  */
 
 import { createAction } from '@reduxjs/toolkit';
-import { SiteUrl } from 'src/types/app.types';
+import { Authentication } from '../authentication/types';
 import { Service } from './types';
 
-export const getServices = createAction<SiteUrl>('get/services');
+export const getServices = createAction<Authentication>('get/services');
 export const getServicesSuccess = createAction<Service[]>('get/services_success');
 export const getServicesError = createAction<void>('get/services_error');

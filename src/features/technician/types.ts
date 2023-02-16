@@ -3,6 +3,7 @@
  */
 
 import { SiteUrl } from 'src/types/app.types';
+import { Authentication } from '../authentication/types';
 
 export interface Technician {
   adminid: string;
@@ -60,7 +61,7 @@ export interface TechnicianReducer {
   };
 }
 
-export type AppointmentsOfTech = SiteUrl & {
+export type AppointmentsOfTech = Authentication & {
   technicianId: string;
   date: string;
 };

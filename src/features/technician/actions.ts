@@ -4,9 +4,10 @@
 
 import { createAction } from '@reduxjs/toolkit';
 import { SiteUrl } from 'src/types/app.types';
+import { Authentication } from '../authentication/types';
 import { Appointment, AppointmentsOfTech, Technician } from './types';
 
-export const getTechnicians = createAction<SiteUrl>('get/technicians');
+export const getTechnicians = createAction<Authentication>('get/technicians');
 export const getTechniciansSuccess = createAction<Technician[]>('get/technicians_success');
 export const getTechniciansError = createAction<void>('get/technicians_error');
 

@@ -44,17 +44,18 @@ const BookingStaff = () => {
   const { technicians, ui } = useAppSelector((s) => s.technician);
   const { loading } = ui || {};
   const dispatch = useAppDispatch();
-  const site_url = useSiteUrl();
+  const { auth } = useAppSelector((s) => s.authentication);
+  const { url, api_token } = auth || {};
 
   const setStaff = (staff: Technician) => {
     dispatch(setBookingForm({ staff, step: 1 }));
   };
 
   useEffect(() => {
-    if (!technicians && site_url) {
-      dispatch(getTechnicians({ site_url }));
+    if (!technicians && url && api_token) {
+      dispatch(getTechnicians({ url, api_token }));
     }
-  }, [dispatch, site_url, technicians]);
+  }, [dispatch, technicians, url, api_token]);
 
   return (
     <>

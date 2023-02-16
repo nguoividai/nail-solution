@@ -1,5 +1,5 @@
 export type SiteUrl = {
-  site_url: string;
+  token: string;
 };
 
 export type Option = string | Record<string, any>;

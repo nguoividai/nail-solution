@@ -21,7 +21,8 @@ const BookingTime = () => {
   const [date, setDate] = useState<string | undefined>(
     bookingForm?.time ? new Date(bookingForm?.time).toISOString() : undefined
   );
-  const site_url = useSiteUrl();
+  const { auth } = useAppSelector((s) => s.authentication);
+  const { url, api_token } = auth || {};
   const busyTimes = useBusyTimeDate({
     date: dayjs(date).format('YYYY-MM-DD'),
     technicianId: bookingForm?.staff?.adminid,
@@ -51,16 +52,17 @@ const BookingTime = () => {
   };
 
   useEffect(() => {
-    if (site_url && date && bookingForm?.staff?.adminid) {
+    if (url && api_token && date && bookingForm?.staff?.adminid) {
       dispatch(
         getAppointmentsOfTech({
-          site_url,
+          url,
+          api_token,
           date: dayjs(date).format('YYYY-MM-DD'),
           technicianId: bookingForm.staff.adminid,
         })
       );
     }
-  }, [dispatch, date, site_url, bookingForm?.staff?.adminid]);
+  }, [dispatch, date, url, api_token, bookingForm?.staff?.adminid]);
 
   return (
     <>

@@ -4,8 +4,8 @@
  */
 
 import { call, put, SagaReturnType } from 'redux-saga/effects';
-import { SiteUrl } from 'src/types/app.types';
 import { ActionSaga } from 'src/types/saga.types';
+import { Authentication } from '../authentication/types';
 import {
   getAppointmentsOfTechError,
   getAppointmentsOfTechSuccess,
@@ -15,10 +15,10 @@ import {
 import { getAPIAppointmentsOfTech, getAPITechnicians } from './apis';
 import { AppointmentsOfTech } from './types';
 
-export function* getWorkerServices(action: ActionSaga<SiteUrl>) {
+export function* getWorkerServices(action: ActionSaga<Authentication>) {
   try {
     const { payload } = action || {};
-    if (payload?.site_url) {
+    if (payload?.url) {
       const { data }: SagaReturnType<typeof getAPITechnicians> = yield call(
         getAPITechnicians,
         payload
@@ -34,7 +34,7 @@ export function* getWorkerServices(action: ActionSaga<SiteUrl>) {
 export function* getWorkerAppointmentsOfTech(action: ActionSaga<AppointmentsOfTech>) {
   try {
     const { payload } = action || {};
-    if (payload?.site_url && payload?.date && payload?.technicianId) {
+    if (payload?.url && payload?.date && payload?.technicianId) {
       const { data }: SagaReturnType<typeof getAPIAppointmentsOfTech> = yield call(
         getAPIAppointmentsOfTech,
         payload
