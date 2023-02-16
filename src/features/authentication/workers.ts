@@ -6,6 +6,7 @@
 import { call, put, SagaReturnType } from 'redux-saga/effects';
 import { SiteUrl } from 'src/types/app.types';
 import { ActionSaga } from 'src/types/saga.types';
+import { getBusiness } from '../shop/actions';
 import { getAuthenticationError, getAuthenticationSuccess } from './actions';
 import { getAuthenticationAPI } from './apis';
 
@@ -18,6 +19,7 @@ export function* getAuthenticationWorker(action: ActionSaga<SiteUrl>) {
         payload
       );
       yield put(getAuthenticationSuccess(data));
+      yield put(getBusiness(data));
     }
   } catch (e) {
     yield put(getAuthenticationError());

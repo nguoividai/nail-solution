@@ -15,6 +15,10 @@ const MainLayout = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (!token) {
+      navigate('/not-found');
+    }
+
     if ((!url || url === 'null') && token) {
       dispatch(getAuthentication({ token }));
     }
